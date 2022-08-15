@@ -1,5 +1,4 @@
 import pandas as pd
-import math
 from arango import ArangoClient
 import time
 from datetime import timedelta
