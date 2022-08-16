@@ -31,7 +31,7 @@ def create_coll_from_df(df, name_string):
 
 def get_object (df, row, collection_name):
     #col_count = len(df.columns)
-    key_string = collection_name[0] + "M" + str(row)
+    key_string = collection_name[0].upper() + "M" + str(row)
     obj = {"_key": key_string}
     for i in df.columns:
         obj[i] = df.loc[row, i]
