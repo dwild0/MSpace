@@ -5,6 +5,7 @@ from datetime import timedelta
 # this function creates documents in the passed collection of
 # name_string. It uses the entries of df dataframe
 
+# commented print("-") lines are no more needed debugging tools
 def create_coll_from_df(df, name_string):
     if db.has_collection(name_string):
         print("Collection " + name_string +" already exists. Would you like to delete it and create an empty one?")
@@ -12,16 +13,17 @@ def create_coll_from_df(df, name_string):
             db.delete_collection(name_string)
             db.create_collection(name_string)
             print("collection created from scratch")
-            print("y")
+            #print("-")
         else:
             return err_existing_col
     else:
         db.create_collection(name_string)
-    print("check 1")
+    #print("-")
     col = db.collection(name_string)
-    print("check: passed coll assignment")
+    #print("-")
     for i in df.index:
         col.insert(get_object(df, i, name_string))
+    print("\ncollection " + name_string + " successfully filled")
     return 1
 
 # This function creates a dictionary object, that is passed to the
