@@ -13,3 +13,4 @@ The package for ArangoDB is the [python-arango](https://docs.python-arango.com/e
 - [ ] create alternative database structures 
 - [ ] create a file that generates a graph 
 - [ ] write a documentation 
+- [ ] move notes from code comments to README.md or a project wiki 
