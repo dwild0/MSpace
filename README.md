@@ -10,7 +10,8 @@ The package for ArangoDB is [python-arango](https://docs.python-arango.com/en/ma
 
 
 ## To-Do
-- [ ] create alternative database structures 
+- [ ] create alternative database structures -- wip
 - [ ] create a file that generates a graph 
 - [ ] write a documentation 
-- [ ] move notes from code comments to README.md or a project wiki 
+- [ ] move notes from code comments to README.md or a project wiki --wip 
+- [ ] receive data from database (via python or AQL queries)
