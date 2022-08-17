@@ -52,3 +52,8 @@ fqual = qual_df.reindex(columns=header_list)
 fkamera = kamera_df.reindex(columns=header_list)
 fcouple = couple_df.reindex(columns=header_list)
 fumgebung = umgebung_df.reindex(columns=header_list)
+
+df = pd.concat([fwaage, fheiz, fqual, fkamera, fcouple, fumgebung])
+
+print("shape of all_data: ")
+print(df.shape)
