@@ -49,7 +49,7 @@ umgebung_df.rename(columns={"env_iaq_index": "value3", "env_pressure": "value4"}
 
 header_list = ['uuid', 'timestamp_start', "timestamp_prod_start", 'timestamp_qual_start', 'value1', "value2"]
 header_list.extend(["value3", "value4", "timestamp_end", "timestamp_prod_end", "timestamp_qual_end", "start_date"])
-header_list.append("end_date")
+header_list.extend(["end_date", "source"])
 
 # df = df.reindex(columns = header_list)
 fwaage = waage_df.reindex(columns=header_list)
@@ -61,5 +61,7 @@ fumgebung = umgebung_df.reindex(columns=header_list)
 
 df = pd.concat([fwaage, fheiz, fqual, fkamera, fcouple, fumgebung])
 
+print("columns are:")
+print(df.columns)
 print("shape of all_data: ")
 print(df.shape)
