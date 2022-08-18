@@ -67,3 +67,4 @@ print(df.columns)
 print("shape of all_data: ")
 print(df.shape)
 df.to_csv("export.csv")
+
