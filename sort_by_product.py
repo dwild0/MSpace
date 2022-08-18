@@ -8,8 +8,8 @@ from arango import ArangoClient
 client = ArangoClient(hosts="http://localhost:8529")
 sys_db = client.db("_system", username="root", password="client")
 
-if not sys_db.has_database(("seminar2")):
-    sys_db.create_database(("seminar2"))
+if not sys_db.has_database("seminar2"):
+    sys_db.create_database("seminar2")
     db = client.db("seminar2", username="root", password="client")
 else:
     db = client.db("seminar2", username="root", password="client")
@@ -25,6 +25,12 @@ kamera_df = pd.read_csv("kamera_df.csv", index_col=0)
 couple_df = pd.read_csv("thermo_couple_heiz_df.csv", index_col=0)
 umgebung_df = pd.read_csv("umgebung_df.csv", index_col=0)
 
+waage_df.insert(loc=3, column="source", value="waage")
+heiz_df.insert(loc=9, column="source", value="heiz")
+qual_df.insert(loc=9, column="source", value="qual")
+kamera_df.insert(loc=4, column="source", value="kamera")
+couple_df.insert(loc=4, column="source", value="couple")
+umgebung_df.insert(loc=6, column="source", value="umgebung")
 # Format
 # waage: -uuid, -timestamp_qual_start, -v1
 # heiz: uuid, timestamp_prod_start, -timestamp_start, -v1, -v2, timestamp_prod_end, timestamp_end, start_date, end_date
