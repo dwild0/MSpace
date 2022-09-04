@@ -5,16 +5,42 @@ from arango import ArangoClient
 # and sort them by product (so uuid) and data origin
 # data has to be restructured
 
-client = ArangoClient(hosts="http://localhost:8529")
-sys_db = client.db("_system", username="root", password="client")
+def find_col_min(sdf, col_string):
+    """
+    A function that searches for the smallest element in a timestamp column. Column data need to be of
+    pandas.datetime type.
+    :param sdf: dataframe where is searched in
+    :param col_string: column
+    :return: smallest timestamp in column
+    """
+    act_min = sdf[col_string][0]
+    #n_value = sdf[col_string][1]
+    for i in sdf.index:
+        #print("i "+str(i))
+        #print("act_min "+str(act_min))
+        #print("sdf " + str(sdf[col_string][i]))
+        if (type(sdf[col_string][i]) != pd._libs.tslibs.nattype.NaTType) and type(act_min)==(pd._libs.tslibs.nattype.NaTType):
+            act_min = sdf[col_string][i]
+            r=i
+        if act_min>sdf[col_string][i]:
+            act_min = sdf[col_string][i]
+            r=i
+    return act_min, r
 
-if not sys_db.has_database("seminar2"):
-    sys_db.create_database("seminar2")
-    db = client.db("seminar2", username="root", password="client")
-else:
-    db = client.db("seminar2", username="root", password="client")
+# only accepts dataframes containing all data with matching structure
+# def sort_by_time(fdf):
+    
 
-print("connection to database -seminar2- established")
+# client = ArangoClient(hosts="http://localhost:8529")
+# sys_db = client.db("_system", username="root", password="client")
+
+#if not sys_db.has_database("seminar2"):
+#    sys_db.create_database("seminar2")
+#    db = client.db("seminar2", username="root", password="client")
+#else:
+#    db = client.db("seminar2", username="root", password="client")
+
+#print("connection to database -seminar2- established")
 
 # read data from .csv file
 # Important note: files need to be in the same folder as the python file
